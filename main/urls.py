@@ -1,8 +1,11 @@
 from django.urls import path
 
-from .views import PetListView, PetDetailView, MilkListView, MilkDetailView, FodderListView, FodderDetailView
+from .views import (PetListView, PetDetailView, MilkListView, MilkDetailView,
+                    FodderListView, FodderDetailView, FarmDetailView, FarmListView)
 
 urlpatterns = [
+    path('farm/', FarmListView.as_view()),
+    path('farm/<int:pk>/', FarmDetailView.as_view()),
     path('pet/', PetListView.as_view()),
     path('pet/<int:pk>/', PetDetailView.as_view()),
     path('milk/', MilkListView.as_view()),
@@ -10,4 +13,3 @@ urlpatterns = [
     path('fodder/', FodderListView.as_view()),
     path('fodder/<int:pk>/', FodderDetailView.as_view()),
 ]
-

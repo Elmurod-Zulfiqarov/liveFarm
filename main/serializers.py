@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from .models import Pet, Milk, Fodder
+from .models import Farm, Pet, Milk, Fodder
+
+
+class FarmSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Farm
+        fields = '__all__'
 
 
 class PetSerializer(serializers.ModelSerializer):
