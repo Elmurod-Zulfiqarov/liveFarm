@@ -21,5 +21,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-docs")
+    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-docs"),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name="redoc-docs")
+
 ]
