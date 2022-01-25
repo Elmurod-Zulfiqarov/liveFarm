@@ -3,7 +3,8 @@ from rest_framework.permissions import IsAdminUser
 from .permissions import IsAdminOrReadOnly
 from .models import Pet, Milk, Fodder, Farm
 from .serializers import PetSerializer, MilkSerializer, FodderSerializer, FarmSerializer
-
+from rest_framework import viewsets
+from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 
 class FarmListView(ListCreateAPIView):
     permission_classes = (IsAdminUser,)
@@ -15,6 +16,26 @@ class FarmDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminUser,)
     queryset = Farm.objects.all()
     serializer_class = FarmSerializer
+
+
+# Bu klassni o'zi yuqoridagi 2 ta classni o'rnini bosadi.
+class FarmView(viewsets.ModelViewSet):  
+    permission_classes = (IsAdminOrReadOnly,)
+    queryset = Farm.objects.all()
+    serializer_class = FarmSerializer
+    parser_classes = (JSONParser, MultiPartParser, FormParser,)
+
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
 
 
 class PetListView(ListCreateAPIView):
