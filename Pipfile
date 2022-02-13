@@ -6,9 +6,12 @@ name = "pypi"
 [packages]
 django = "*"
 djangorestframework = "*"
-dj-rest-auth = "*"
 django-import-export = "*"
 drf-yasg = "*"
+django-decouple = "~=2.1"
+psycopg2-binary = "~=2.9.3"
+pillow = "*"
+dj-rest-auth = "*"
 
 [dev-packages]
 
